@@ -1,6 +1,6 @@
 $(document).ready(()=>{
     $.ajax({
-        url: "config.json",
+        url: "/config.json",
         success: (data)=>{
             try {
                 if(!data instanceof Object)data = JSON.parse(data);
@@ -12,6 +12,8 @@ $(document).ready(()=>{
                     return;
                 }
                 let reg = new RegExp(/#(.*)/g);
+                let base64 = reg.exec(window.location.hash)[1]
+                let link = window.atob(base64)
                 let referrer = document.referrer.split('/')[2];
                 referrer = referrer===undefined?"":referrer;
                 console.log(link,referrer)
@@ -44,11 +46,11 @@ $(document).ready(()=>{
         }
     })
 })
-function popUpWarning(config,link){
+function popUpWarning(config,reg){
     console.log("popUp")
     swal.fire({
         title: "确定访问？",
-        text: "该网址不属于"+config.sitename+"，\n你确定要打开"+link+"吗？",
+        text: "该网址不属于"+config.sitename+"，\n你确定要打开"+reg+"吗？",
         type: "warning",
         showCancelButton: true,
         confirmButtonColor: "#DD6B55",
