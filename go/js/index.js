@@ -1,6 +1,6 @@
 $(document).ready(()=>{
     $.ajax({
-        url: "/config.json",
+        url: "config.json",
         success: (data)=>{
             try {
                 if(!data instanceof Object)data = JSON.parse(data);
@@ -12,8 +12,6 @@ $(document).ready(()=>{
                     return;
                 }
                 let reg = new RegExp(/#(.*)/g);
-                let base64 = reg.exec(window.location.hash)[1]
-                let link = window.atob(base64)
                 let referrer = document.referrer.split('/')[2];
                 referrer = referrer===undefined?"":referrer;
                 console.log(link,referrer)
