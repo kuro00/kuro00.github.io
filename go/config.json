@@ -1,0 +1,10 @@
+{
+    "sitename":"结草社 | 节操社",
+    "allowlist": [
+        "jiecaoshe.com"
+    ],
+    "backTo": {
+        "url": "https://www.jiecaoshe.com/",
+        "sitename": "结草社 | 节操社"
+    }
+}
